@@ -1,0 +1,4477 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CFT Demo API",
+    "description": "OpenAPI specification for CFT Demo",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://us-api.knack.com/v1",
+      "description": "Knack API Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Objects",
+      "description": "Object-based API endpoints with full access to data"
+    },
+    {
+      "name": "View: Home",
+      "description": "Endpoints for Home views"
+    },
+    {
+      "name": "View: Account Settings",
+      "description": "Endpoints for Account Settings views"
+    },
+    {
+      "name": "View: My Cases",
+      "description": "Endpoints for My Cases views"
+    },
+    {
+      "name": "View: My Cases Login",
+      "description": "Endpoints for My Cases Login views"
+    },
+    {
+      "name": "View: Case Details",
+      "description": "Endpoints for Case Details views"
+    },
+    {
+      "name": "View: Case Details",
+      "description": "Endpoints for Case Details views"
+    },
+    {
+      "name": "View: Admin Portal",
+      "description": "Endpoints for Admin Portal views"
+    },
+    {
+      "name": "View: Admin Portal Login",
+      "description": "Endpoints for Admin Portal Login views"
+    },
+    {
+      "name": "View: Unions",
+      "description": "Endpoints for Unions views"
+    },
+    {
+      "name": "View: Edit Union",
+      "description": "Endpoints for Edit Union views"
+    },
+    {
+      "name": "View: Cases",
+      "description": "Endpoints for Cases views"
+    },
+    {
+      "name": "View: Coordinators",
+      "description": "Endpoints for Coordinators views"
+    },
+    {
+      "name": "View: Edit Case",
+      "description": "Endpoints for Edit Case views"
+    },
+    {
+      "name": "View: Edit Coordinator",
+      "description": "Endpoints for Edit Coordinator views"
+    }
+  ],
+  "paths": {
+    "/objects/object_1": {
+      "get": {
+        "summary": "Get Account Structure",
+        "description": "Retrieves the structure definition for Account",
+        "operationId": "object_1_getStructureAccounts",
+        "tags": [
+          "Accounts",
+          "Builder"
+        ],
+        "responses": {
+          "200": {
+            "description": "The structure definition for Account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_1"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/objects/object_1/records": {
+      "get": {
+        "summary": "List Accounts",
+        "description": "Retrieves a list of Accounts",
+        "operationId": "object_1_listRecordsAccounts",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/sortField"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Accounts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/object_1"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Account",
+        "description": "Creates a new Account",
+        "operationId": "object_1_createRecordAccounts",
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "description": "Account to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created Account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_1/records/{id}": {
+      "get": {
+        "summary": "Get Account",
+        "description": "Retrieves a specific Account by ID",
+        "operationId": "object_1_getRecordAccounts",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Account to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested Account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_1"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Account",
+        "description": "Updates an existing Account",
+        "operationId": "object_1_updateRecordAccounts",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Account to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Account data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Account",
+        "description": "Deletes a Account",
+        "operationId": "object_1_deleteRecordAccounts",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Account to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_2": {
+      "get": {
+        "summary": "Get Admin Structure",
+        "description": "Retrieves the structure definition for Admin",
+        "operationId": "object_2_getStructureAdmins",
+        "tags": [
+          "Admins",
+          "Builder"
+        ],
+        "responses": {
+          "200": {
+            "description": "The structure definition for Admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_2"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/objects/object_2/records": {
+      "get": {
+        "summary": "List Admins",
+        "description": "Retrieves a list of Admins",
+        "operationId": "object_2_listRecordsAdmins",
+        "tags": [
+          "Admins"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/sortField"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Admins",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/object_2"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Admin",
+        "description": "Creates a new Admin",
+        "operationId": "object_2_createRecordAdmins",
+        "tags": [
+          "Admins"
+        ],
+        "requestBody": {
+          "description": "Admin to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_2"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created Admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_2"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_2/records/{id}": {
+      "get": {
+        "summary": "Get Admin",
+        "description": "Retrieves a specific Admin by ID",
+        "operationId": "object_2_getRecordAdmins",
+        "tags": [
+          "Admins"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Admin to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested Admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_2"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Admin",
+        "description": "Updates an existing Admin",
+        "operationId": "object_2_updateRecordAdmins",
+        "tags": [
+          "Admins"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Admin to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Admin data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_2"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_2"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Admin",
+        "description": "Deletes a Admin",
+        "operationId": "object_2_deleteRecordAdmins",
+        "tags": [
+          "Admins"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Admin to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_3": {
+      "get": {
+        "summary": "Get Coordinator Structure",
+        "description": "Retrieves the structure definition for Coordinator",
+        "operationId": "object_3_getStructureCoordinators",
+        "tags": [
+          "Coordinators",
+          "Builder"
+        ],
+        "responses": {
+          "200": {
+            "description": "The structure definition for Coordinator",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_3"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/objects/object_3/records": {
+      "get": {
+        "summary": "List Coordinators",
+        "description": "Retrieves a list of Coordinators",
+        "operationId": "object_3_listRecordsCoordinators",
+        "tags": [
+          "Coordinators"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/sortField"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Coordinators",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/object_3"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Coordinator",
+        "description": "Creates a new Coordinator",
+        "operationId": "object_3_createRecordCoordinators",
+        "tags": [
+          "Coordinators"
+        ],
+        "requestBody": {
+          "description": "Coordinator to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_3"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created Coordinator",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_3"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_3/records/{id}": {
+      "get": {
+        "summary": "Get Coordinator",
+        "description": "Retrieves a specific Coordinator by ID",
+        "operationId": "object_3_getRecordCoordinators",
+        "tags": [
+          "Coordinators"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Coordinator to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested Coordinator",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_3"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Coordinator",
+        "description": "Updates an existing Coordinator",
+        "operationId": "object_3_updateRecordCoordinators",
+        "tags": [
+          "Coordinators"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Coordinator to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Coordinator data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_3"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Coordinator",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_3"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Coordinator",
+        "description": "Deletes a Coordinator",
+        "operationId": "object_3_deleteRecordCoordinators",
+        "tags": [
+          "Coordinators"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Coordinator to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_4": {
+      "get": {
+        "summary": "Get Union Structure",
+        "description": "Retrieves the structure definition for Union",
+        "operationId": "object_4_getStructureUnions",
+        "tags": [
+          "Unions",
+          "Builder"
+        ],
+        "responses": {
+          "200": {
+            "description": "The structure definition for Union",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_4"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/objects/object_4/records": {
+      "get": {
+        "summary": "List Unions",
+        "description": "Retrieves a list of Unions",
+        "operationId": "object_4_listRecordsUnions",
+        "tags": [
+          "Unions"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/sortField"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Unions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/object_4"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Union",
+        "description": "Creates a new Union",
+        "operationId": "object_4_createRecordUnions",
+        "tags": [
+          "Unions"
+        ],
+        "requestBody": {
+          "description": "Union to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_4"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created Union",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_4"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_4/records/{id}": {
+      "get": {
+        "summary": "Get Union",
+        "description": "Retrieves a specific Union by ID",
+        "operationId": "object_4_getRecordUnions",
+        "tags": [
+          "Unions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Union to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested Union",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_4"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Union",
+        "description": "Updates an existing Union",
+        "operationId": "object_4_updateRecordUnions",
+        "tags": [
+          "Unions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Union to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Union data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_4"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Union",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_4"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Union",
+        "description": "Deletes a Union",
+        "operationId": "object_4_deleteRecordUnions",
+        "tags": [
+          "Unions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Union to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_5": {
+      "get": {
+        "summary": "Get Case Structure",
+        "description": "Retrieves the structure definition for Case",
+        "operationId": "object_5_getStructureCases",
+        "tags": [
+          "Cases",
+          "Builder"
+        ],
+        "responses": {
+          "200": {
+            "description": "The structure definition for Case",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_5"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/objects/object_5/records": {
+      "get": {
+        "summary": "List Cases",
+        "description": "Retrieves a list of Cases",
+        "operationId": "object_5_listRecordsCases",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/sortField"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Cases",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/object_5"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Case",
+        "description": "Creates a new Case",
+        "operationId": "object_5_createRecordCases",
+        "tags": [
+          "Cases"
+        ],
+        "requestBody": {
+          "description": "Case to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_5"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created Case",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_5"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_5/records/{id}": {
+      "get": {
+        "summary": "Get Case",
+        "description": "Retrieves a specific Case by ID",
+        "operationId": "object_5_getRecordCases",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested Case",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_5"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Case",
+        "description": "Updates an existing Case",
+        "operationId": "object_5_updateRecordCases",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Case data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_5"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Case",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_5"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Case",
+        "description": "Deletes a Case",
+        "operationId": "object_5_deleteRecordCases",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_7": {
+      "get": {
+        "summary": "Get Case Attachment Structure",
+        "description": "Retrieves the structure definition for Case Attachment",
+        "operationId": "object_7_getStructureCaseAttachments",
+        "tags": [
+          "Case Attachments",
+          "Builder"
+        ],
+        "responses": {
+          "200": {
+            "description": "The structure definition for Case Attachment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_7"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/objects/object_7/records": {
+      "get": {
+        "summary": "List Case Attachments",
+        "description": "Retrieves a list of Case Attachments",
+        "operationId": "object_7_listRecordsCaseAttachments",
+        "tags": [
+          "Case Attachments"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/sortField"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Case Attachments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/object_7"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Case Attachment",
+        "description": "Creates a new Case Attachment",
+        "operationId": "object_7_createRecordCaseAttachments",
+        "tags": [
+          "Case Attachments"
+        ],
+        "requestBody": {
+          "description": "Case Attachment to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_7"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created Case Attachment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_7"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_7/records/{id}": {
+      "get": {
+        "summary": "Get Case Attachment",
+        "description": "Retrieves a specific Case Attachment by ID",
+        "operationId": "object_7_getRecordCaseAttachments",
+        "tags": [
+          "Case Attachments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case Attachment to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested Case Attachment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_7"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Case Attachment",
+        "description": "Updates an existing Case Attachment",
+        "operationId": "object_7_updateRecordCaseAttachments",
+        "tags": [
+          "Case Attachments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case Attachment to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Case Attachment data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_7"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Case Attachment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_7"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Case Attachment",
+        "description": "Deletes a Case Attachment",
+        "operationId": "object_7_deleteRecordCaseAttachments",
+        "tags": [
+          "Case Attachments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case Attachment to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_8": {
+      "get": {
+        "summary": "Get Case Note Structure",
+        "description": "Retrieves the structure definition for Case Note",
+        "operationId": "object_8_getStructureCaseNotes",
+        "tags": [
+          "Case Notes",
+          "Builder"
+        ],
+        "responses": {
+          "200": {
+            "description": "The structure definition for Case Note",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_8"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/objects/object_8/records": {
+      "get": {
+        "summary": "List Case Notes",
+        "description": "Retrieves a list of Case Notes",
+        "operationId": "object_8_listRecordsCaseNotes",
+        "tags": [
+          "Case Notes"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/sortField"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Case Notes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/object_8"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Case Note",
+        "description": "Creates a new Case Note",
+        "operationId": "object_8_createRecordCaseNotes",
+        "tags": [
+          "Case Notes"
+        ],
+        "requestBody": {
+          "description": "Case Note to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_8"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created Case Note",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_8"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_8/records/{id}": {
+      "get": {
+        "summary": "Get Case Note",
+        "description": "Retrieves a specific Case Note by ID",
+        "operationId": "object_8_getRecordCaseNotes",
+        "tags": [
+          "Case Notes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case Note to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested Case Note",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_8"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Case Note",
+        "description": "Updates an existing Case Note",
+        "operationId": "object_8_updateRecordCaseNotes",
+        "tags": [
+          "Case Notes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case Note to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Case Note data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_8"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Case Note",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_8"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Case Note",
+        "description": "Deletes a Case Note",
+        "operationId": "object_8_deleteRecordCaseNotes",
+        "tags": [
+          "Case Notes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Case Note to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_9": {
+      "get": {
+        "summary": "Get Tag Structure",
+        "description": "Retrieves the structure definition for Tag",
+        "operationId": "object_9_getStructureTags",
+        "tags": [
+          "Tags",
+          "Builder"
+        ],
+        "responses": {
+          "200": {
+            "description": "The structure definition for Tag",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_9"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/objects/object_9/records": {
+      "get": {
+        "summary": "List Tags",
+        "description": "Retrieves a list of Tags",
+        "operationId": "object_9_listRecordsTags",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          },
+          {
+            "$ref": "#/components/parameters/sortField"
+          },
+          {
+            "$ref": "#/components/parameters/sortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Tags",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/object_9"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Tag",
+        "description": "Creates a new Tag",
+        "operationId": "object_9_createRecordTags",
+        "tags": [
+          "Tags"
+        ],
+        "requestBody": {
+          "description": "Tag to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_9"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created Tag",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_9"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/objects/object_9/records/{id}": {
+      "get": {
+        "summary": "Get Tag",
+        "description": "Retrieves a specific Tag by ID",
+        "operationId": "object_9_getRecordTags",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Tag to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested Tag",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_9"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update Tag",
+        "description": "Updates an existing Tag",
+        "operationId": "object_9_updateRecordTags",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Tag to update",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Updated Tag data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/object_9"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Tag",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/object_9"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete Tag",
+        "description": "Deletes a Tag",
+        "operationId": "object_9_deleteRecordTags",
+        "tags": [
+          "Tags"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the Tag to delete",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid API key"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "apiKeyRest": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_1/views/view_6/records": {
+      "get": {
+        "summary": "Access Search Cases records",
+        "description": "Retrieves records from Search Cases view in Home. Returns a list of records.",
+        "operationId": "view_6_accessSearchCases",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Search Cases",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_home_view_6"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_1/views/view_20/records": {
+      "get": {
+        "summary": "Access Search Case Attachments records",
+        "description": "Retrieves records from Search Case Attachments view in Home. Returns a list of records.",
+        "operationId": "view_20_accessSearchCaseAttachments",
+        "tags": [
+          "Case Attachments"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Search Case Attachments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_home_view_20"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_2/views/view_1/records": {
+      "put": {
+        "summary": "Update Account Settings",
+        "description": "Updates data through Account Settings form in Account Settings",
+        "operationId": "view_1_updateAccountSettings",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "description": "Data to update in Account Settings",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_account-settings_view_1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the updated record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_2/views/view_2/records": {
+      "put": {
+        "summary": "Update Change Password",
+        "description": "Updates data through Change Password form in Account Settings",
+        "operationId": "view_2_updateChangePassword",
+        "tags": [
+          "Accounts"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "description": "Data to update in Change Password",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_account-settings_view_2"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the updated record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_3/views/view_4/records": {
+      "get": {
+        "summary": "Access Cases records",
+        "description": "Retrieves records from Cases view in My Cases. Returns a list of records filtered by the parent ID.",
+        "operationId": "view_4_accessCases",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "my-cases-login_id",
+            "in": "query",
+            "description": "ID of the parent record for this My Cases view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Cases",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_my-cases_view_4"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_5/views/view_5/records": {
+      "get": {
+        "summary": "Access Case records",
+        "description": "Retrieves records from Case view in Case Details. Returns a single record.",
+        "operationId": "view_5_accessCase",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "my-cases_id",
+            "in": "query",
+            "description": "ID of the parent record for this Case Details view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Case",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/view_case-details_view_5"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_5/views/view_22/records": {
+      "post": {
+        "summary": "Submit Add Case Note",
+        "description": "Submits data to Add Case Note form in Case Details",
+        "operationId": "view_22_submitAddCaseNote",
+        "tags": [
+          "Case Notes"
+        ],
+        "parameters": [
+          {
+            "name": "my-cases_id",
+            "in": "query",
+            "description": "ID of the parent record for this Case Details view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Data to submit to Add Case Note",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_case-details_view_22"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_5/views/view_23/records": {
+      "post": {
+        "summary": "Submit Add Case Attachment",
+        "description": "Submits data to Add Case Attachment form in Case Details",
+        "operationId": "view_23_submitAddCaseAttachment",
+        "tags": [
+          "Case Attachments"
+        ],
+        "parameters": [
+          {
+            "name": "my-cases_id",
+            "in": "query",
+            "description": "ID of the parent record for this Case Details view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Data to submit to Add Case Attachment",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_case-details_view_23"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_5/views/view_24/records": {
+      "get": {
+        "summary": "Access Case Attachments records",
+        "description": "Retrieves records from Case Attachments view in Case Details. Returns a list of records filtered by the parent ID.",
+        "operationId": "view_24_accessCaseAttachments",
+        "tags": [
+          "Case Attachments"
+        ],
+        "parameters": [
+          {
+            "name": "my-cases_id",
+            "in": "query",
+            "description": "ID of the parent record for this Case Details view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Case Attachments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_case-details_view_24"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_5/views/view_25/records": {
+      "get": {
+        "summary": "Access Case Notes records",
+        "description": "Retrieves records from Case Notes view in Case Details. Returns a list of records filtered by the parent ID.",
+        "operationId": "view_25_accessCaseNotes",
+        "tags": [
+          "Case Notes"
+        ],
+        "parameters": [
+          {
+            "name": "my-cases_id",
+            "in": "query",
+            "description": "ID of the parent record for this Case Details view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Case Notes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_case-details_view_25"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_6/views/view_7/records": {
+      "get": {
+        "summary": "Access Case records",
+        "description": "Retrieves records from Case view in Case Details. Returns a single record.",
+        "operationId": "view_7_accessCase",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "home_id",
+            "in": "query",
+            "description": "ID of the parent record for this Case Details view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Case",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/view_case-details2_view_7"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_6/views/view_21/records": {
+      "get": {
+        "summary": "Access Case Attachments records",
+        "description": "Retrieves records from Case Attachments view in Case Details. Returns a list of records filtered by the parent ID.",
+        "operationId": "view_21_accessCaseAttachments",
+        "tags": [
+          "Case Attachments"
+        ],
+        "parameters": [
+          {
+            "name": "home_id",
+            "in": "query",
+            "description": "ID of the parent record for this Case Details view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Case Attachments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_case-details2_view_21"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_10/views/view_9/records": {
+      "get": {
+        "summary": "Access Unions records",
+        "description": "Retrieves records from Unions view in Unions. Returns a list of records filtered by the parent ID.",
+        "operationId": "view_9_accessUnions",
+        "tags": [
+          "Unions"
+        ],
+        "parameters": [
+          {
+            "name": "admin-portal_id",
+            "in": "query",
+            "description": "ID of the parent record for this Unions view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Unions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_unions_view_9"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_10/views/view_11/records": {
+      "post": {
+        "summary": "Submit Add Union",
+        "description": "Submits data to Add Union form in Unions",
+        "operationId": "view_11_submitAddUnion",
+        "tags": [
+          "Unions"
+        ],
+        "parameters": [
+          {
+            "name": "admin-portal_id",
+            "in": "query",
+            "description": "ID of the parent record for this Unions view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Data to submit to Add Union",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_unions_view_11"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_11/views/view_13/records": {
+      "put": {
+        "summary": "Update Edit Union",
+        "description": "Updates data through Edit Union form in Edit Union",
+        "operationId": "view_13_updateEditUnion",
+        "tags": [
+          "Unions"
+        ],
+        "parameters": [
+          {
+            "name": "unions_id",
+            "in": "query",
+            "description": "ID of the parent record for this Edit Union view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Data to update in Edit Union",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_edit-union2_view_13"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the updated record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_12/views/view_14/records": {
+      "get": {
+        "summary": "Access Cases records",
+        "description": "Retrieves records from Cases view in Cases. Returns a list of records filtered by the parent ID.",
+        "operationId": "view_14_accessCases",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "admin-portal_id",
+            "in": "query",
+            "description": "ID of the parent record for this Cases view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Cases",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_cases_view_14"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_12/views/view_16/records": {
+      "post": {
+        "summary": "Submit Add Case",
+        "description": "Submits data to Add Case form in Cases",
+        "operationId": "view_16_submitAddCase",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "admin-portal_id",
+            "in": "query",
+            "description": "ID of the parent record for this Cases view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Data to submit to Add Case",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_cases_view_16"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_13/views/view_17/records": {
+      "get": {
+        "summary": "Access Coordinators records",
+        "description": "Retrieves records from Coordinators view in Coordinators. Returns a list of records filtered by the parent ID.",
+        "operationId": "view_17_accessCoordinators",
+        "tags": [
+          "Coordinators"
+        ],
+        "parameters": [
+          {
+            "name": "admin-portal_id",
+            "in": "query",
+            "description": "ID of the parent record for this Coordinators view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/rowsPerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Records from Coordinators",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/view_coordinators_view_17"
+                      }
+                    },
+                    "total_pages": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_13/views/view_19/records": {
+      "post": {
+        "summary": "Submit Add Coordinator",
+        "description": "Submits data to Add Coordinator form in Coordinators",
+        "operationId": "view_19_submitAddCoordinator",
+        "tags": [
+          "Coordinators"
+        ],
+        "parameters": [
+          {
+            "name": "admin-portal_id",
+            "in": "query",
+            "description": "ID of the parent record for this Coordinators view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Data to submit to Add Coordinator",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_coordinators_view_19"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the created record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_14/views/view_15/records": {
+      "put": {
+        "summary": "Update Edit Case",
+        "description": "Updates data through Edit Case form in Edit Case",
+        "operationId": "view_15_updateEditCase",
+        "tags": [
+          "Cases"
+        ],
+        "parameters": [
+          {
+            "name": "cases_id",
+            "in": "query",
+            "description": "ID of the parent record for this Edit Case view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Data to update in Edit Case",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_edit-case_view_15"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the updated record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    },
+    "/scenes/scene_15/views/view_18/records": {
+      "put": {
+        "summary": "Update Edit Coordinator",
+        "description": "Updates data through Edit Coordinator form in Edit Coordinator",
+        "operationId": "view_18_updateEditCoordinator",
+        "tags": [
+          "Coordinators"
+        ],
+        "parameters": [
+          {
+            "name": "coordinators_id",
+            "in": "query",
+            "description": "ID of the parent record for this Edit Coordinator view",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Data to update in Edit Coordinator",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/view_edit-coordinator_view_18"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID of the updated record"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "viewAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "object_1": {
+        "type": "object",
+        "title": "Accounts",
+        "description": "Account object",
+        "properties": {
+          "field_1": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          },
+          "field_2": {
+            "title": "Email",
+            "description": "Email field",
+            "type": "string",
+            "format": "email"
+          },
+          "field_3": {
+            "title": "Password",
+            "description": "Password field",
+            "type": "string"
+          },
+          "field_4": {
+            "title": "User Status",
+            "description": "User Status field",
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "pending approval"
+            ],
+            "default": "active"
+          },
+          "field_5": {
+            "title": "User Roles",
+            "description": "List of user roles",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "field_1",
+          "field_2",
+          "field_3",
+          "field_4"
+        ]
+      },
+      "object_2": {
+        "type": "object",
+        "title": "Admins",
+        "description": "Admin object",
+        "properties": {
+          "field_6": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          },
+          "field_7": {
+            "title": "Email",
+            "description": "Email field",
+            "type": "string",
+            "format": "email"
+          },
+          "field_8": {
+            "title": "Password",
+            "description": "Password field",
+            "type": "string"
+          },
+          "field_9": {
+            "title": "User Status",
+            "description": "User Status field",
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "pending approval"
+            ],
+            "default": "active"
+          },
+          "field_10": {
+            "title": "User Roles",
+            "description": "List of user roles",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "field_6",
+          "field_7",
+          "field_8",
+          "field_9"
+        ]
+      },
+      "object_3": {
+        "type": "object",
+        "title": "Coordinators",
+        "description": "Coordinator object",
+        "properties": {
+          "field_11": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          },
+          "field_12": {
+            "title": "Email",
+            "description": "Email field",
+            "type": "string",
+            "format": "email"
+          },
+          "field_13": {
+            "title": "Password",
+            "description": "Password field",
+            "type": "string"
+          },
+          "field_14": {
+            "title": "User Status",
+            "description": "User Status field",
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "pending approval"
+            ],
+            "default": "active"
+          },
+          "field_15": {
+            "title": "User Roles",
+            "description": "List of user roles",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "field_11",
+          "field_12",
+          "field_13",
+          "field_14"
+        ]
+      },
+      "object_4": {
+        "type": "object",
+        "title": "Unions",
+        "description": "Union object",
+        "properties": {
+          "field_16": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field_16"
+        ]
+      },
+      "object_5": {
+        "type": "object",
+        "title": "Cases",
+        "description": "Case object",
+        "properties": {
+          "field_31": {
+            "title": "Case ID",
+            "description": "Case ID field",
+            "type": "integer",
+            "readOnly": true
+          },
+          "field_25": {
+            "title": "Union",
+            "description": "Reference to a Union object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_26": {
+            "title": "Coordinator",
+            "description": "Reference to a Coordinator object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_27": {
+            "title": "Status",
+            "description": "Status field",
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Active",
+              "Closed"
+            ],
+            "default": "kn-blank"
+          },
+          "field_35": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "object_7": {
+        "type": "object",
+        "title": "Case Attachments",
+        "description": "Case Attachment object",
+        "properties": {
+          "field_36": {
+            "title": "Attachment ID",
+            "description": "Attachment ID field",
+            "type": "integer",
+            "readOnly": true
+          },
+          "field_24": {
+            "title": "File",
+            "description": "URL to file",
+            "type": "string",
+            "format": "uri"
+          },
+          "field_23": {
+            "title": "Note",
+            "description": "Note field",
+            "type": "string",
+            "maxLength": 100000
+          },
+          "field_22": {
+            "title": "Case",
+            "description": "Reference to a Case object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_33": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "object_8": {
+        "type": "object",
+        "title": "Case Notes",
+        "description": "Case Note object",
+        "properties": {
+          "field_30": {
+            "title": "Date Created",
+            "description": "Date Created field",
+            "type": "string",
+            "format": "date-time"
+          },
+          "field_28": {
+            "title": "Note",
+            "description": "Unknown field type: rich_text",
+            "type": "string"
+          },
+          "field_29": {
+            "title": "Case",
+            "description": "Reference to a Case object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_34": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "field_28"
+        ]
+      },
+      "object_9": {
+        "type": "object",
+        "title": "Tags",
+        "description": "Tag object",
+        "properties": {
+          "field_32": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field_32"
+        ]
+      },
+      "view_home_view_6": {
+        "type": "object",
+        "title": "Search Cases in Home",
+        "description": "Schema for Search Cases view in Home",
+        "properties": {
+          "field_25": {
+            "title": "Union",
+            "description": "Reference to a Union object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_27": {
+            "title": "Status",
+            "description": "Status field",
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Active",
+              "Closed"
+            ],
+            "default": "kn-blank"
+          },
+          "field_35": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "view_home_view_20": {
+        "type": "object",
+        "title": "Search Case Attachments in Home",
+        "description": "Schema for Search Case Attachments view in Home",
+        "properties": {
+          "field_24": {
+            "title": "File",
+            "description": "URL to file",
+            "type": "string",
+            "format": "uri"
+          },
+          "field_23": {
+            "title": "Note",
+            "description": "Note field",
+            "type": "string",
+            "maxLength": 100000
+          },
+          "field_22": {
+            "title": "Case",
+            "description": "Reference to a Case object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_33": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "view_account-settings_view_1": {
+        "type": "object",
+        "title": "Account Settings in Account Settings",
+        "description": "Schema for Account Settings view in Account Settings",
+        "properties": {
+          "field_1": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          },
+          "field_2": {
+            "title": "Email",
+            "description": "Email field",
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "field_1",
+          "field_2"
+        ]
+      },
+      "view_account-settings_view_2": {
+        "type": "object",
+        "title": "Change Password in Account Settings",
+        "description": "Schema for Change Password view in Account Settings",
+        "properties": {
+          "field_3": {
+            "title": "Password",
+            "description": "Password field",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field_3"
+        ]
+      },
+      "view_my-cases_view_4": {
+        "type": "object",
+        "title": "Cases in My Cases",
+        "description": "Schema for Cases view in My Cases",
+        "properties": {
+          "field_25": {
+            "title": "Union",
+            "description": "Reference to a Union object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_27": {
+            "title": "Status",
+            "description": "Status field",
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Active",
+              "Closed"
+            ],
+            "default": "kn-blank"
+          }
+        }
+      },
+      "view_case-details_view_5": {
+        "type": "object",
+        "title": "Case in Case Details",
+        "description": "Schema for Case view in Case Details",
+        "properties": {
+          "field_25": {
+            "title": "Union",
+            "description": "Reference to a Union object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_26": {
+            "title": "Coordinator",
+            "description": "Reference to a Coordinator object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_27": {
+            "title": "Status",
+            "description": "Status field",
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Active",
+              "Closed"
+            ],
+            "default": "kn-blank"
+          }
+        }
+      },
+      "view_case-details_view_22": {
+        "type": "object",
+        "title": "Add Case Note in Case Details",
+        "description": "Schema for Add Case Note view in Case Details",
+        "properties": {
+          "field_28": {
+            "title": "Note",
+            "description": "Unknown field type: rich_text",
+            "type": "string"
+          },
+          "field_34": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "field_28"
+        ]
+      },
+      "view_case-details_view_23": {
+        "type": "object",
+        "title": "Add Case Attachment in Case Details",
+        "description": "Schema for Add Case Attachment view in Case Details",
+        "properties": {
+          "field_24": {
+            "title": "File",
+            "description": "URL to file",
+            "type": "string",
+            "format": "uri"
+          },
+          "field_23": {
+            "title": "Note",
+            "description": "Note field",
+            "type": "string",
+            "maxLength": 100000
+          },
+          "field_33": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "view_case-details_view_24": {
+        "type": "object",
+        "title": "Case Attachments in Case Details",
+        "description": "Schema for Case Attachments view in Case Details",
+        "properties": {
+          "field_36": {
+            "title": "Attachment ID",
+            "description": "Attachment ID field",
+            "type": "integer",
+            "readOnly": true
+          },
+          "field_24": {
+            "title": "File",
+            "description": "URL to file",
+            "type": "string",
+            "format": "uri"
+          },
+          "field_23": {
+            "title": "Note",
+            "description": "Note field",
+            "type": "string",
+            "maxLength": 100000
+          },
+          "field_33": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "view_case-details_view_25": {
+        "type": "object",
+        "title": "Case Notes in Case Details",
+        "description": "Schema for Case Notes view in Case Details",
+        "properties": {
+          "field_30": {
+            "title": "Date Created",
+            "description": "Date Created field",
+            "type": "string",
+            "format": "date-time"
+          },
+          "field_28": {
+            "title": "Note",
+            "description": "Unknown field type: rich_text",
+            "type": "string"
+          },
+          "field_34": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "field_28"
+        ]
+      },
+      "view_case-details2_view_7": {
+        "type": "object",
+        "title": "Case in Case Details",
+        "description": "Schema for Case view in Case Details",
+        "properties": {
+          "field_25": {
+            "title": "Union",
+            "description": "Reference to a Union object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_26": {
+            "title": "Coordinator",
+            "description": "Reference to a Coordinator object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_27": {
+            "title": "Status",
+            "description": "Status field",
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Active",
+              "Closed"
+            ],
+            "default": "kn-blank"
+          }
+        }
+      },
+      "view_case-details2_view_21": {
+        "type": "object",
+        "title": "Case Attachments in Case Details",
+        "description": "Schema for Case Attachments view in Case Details",
+        "properties": {
+          "field_24": {
+            "title": "File",
+            "description": "URL to file",
+            "type": "string",
+            "format": "uri"
+          },
+          "field_23": {
+            "title": "Note",
+            "description": "Note field",
+            "type": "string",
+            "maxLength": 100000
+          },
+          "field_33": {
+            "title": "Tags",
+            "description": "Reference to a Tags object",
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "view_unions_view_9": {
+        "type": "object",
+        "title": "Unions in Unions",
+        "description": "Schema for Unions view in Unions",
+        "properties": {
+          "field_16": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field_16"
+        ]
+      },
+      "view_unions_view_11": {
+        "type": "object",
+        "title": "Add Union in Unions",
+        "description": "Schema for Add Union view in Unions",
+        "properties": {
+          "field_16": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field_16"
+        ]
+      },
+      "view_edit-union2_view_13": {
+        "type": "object",
+        "title": "Edit Union in Edit Union",
+        "description": "Schema for Edit Union view in Edit Union",
+        "properties": {
+          "field_16": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field_16"
+        ]
+      },
+      "view_cases_view_14": {
+        "type": "object",
+        "title": "Cases in Cases",
+        "description": "Schema for Cases view in Cases",
+        "properties": {
+          "field_31": {
+            "title": "Case ID",
+            "description": "Case ID field",
+            "type": "integer",
+            "readOnly": true
+          },
+          "field_25": {
+            "title": "Union",
+            "description": "Reference to a Union object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_26": {
+            "title": "Coordinator",
+            "description": "Reference to a Coordinator object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_27": {
+            "title": "Status",
+            "description": "Status field",
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Active",
+              "Closed"
+            ],
+            "default": "kn-blank"
+          }
+        }
+      },
+      "view_cases_view_16": {
+        "type": "object",
+        "title": "Add Case in Cases",
+        "description": "Schema for Add Case view in Cases",
+        "properties": {
+          "field_25": {
+            "title": "Union",
+            "description": "Reference to a Union object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_26": {
+            "title": "Coordinator",
+            "description": "Reference to a Coordinator object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_27": {
+            "title": "Status",
+            "description": "Status field",
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Active",
+              "Closed"
+            ],
+            "default": "kn-blank"
+          }
+        }
+      },
+      "view_coordinators_view_17": {
+        "type": "object",
+        "title": "Coordinators in Coordinators",
+        "description": "Schema for Coordinators view in Coordinators",
+        "properties": {
+          "field_11": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          },
+          "field_12": {
+            "title": "Email",
+            "description": "Email field",
+            "type": "string",
+            "format": "email"
+          },
+          "field_14": {
+            "title": "User Status",
+            "description": "User Status field",
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "pending approval"
+            ],
+            "default": "active"
+          },
+          "field_15": {
+            "title": "User Roles",
+            "description": "List of user roles",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "field_11",
+          "field_12",
+          "field_14"
+        ]
+      },
+      "view_coordinators_view_19": {
+        "type": "object",
+        "title": "Add Coordinator in Coordinators",
+        "description": "Schema for Add Coordinator view in Coordinators",
+        "properties": {
+          "field_11": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          },
+          "field_12": {
+            "title": "Email",
+            "description": "Email field",
+            "type": "string",
+            "format": "email"
+          },
+          "field_13": {
+            "title": "Password",
+            "description": "Password field",
+            "type": "string"
+          },
+          "field_14": {
+            "title": "User Status",
+            "description": "User Status field",
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "pending approval"
+            ],
+            "default": "active"
+          }
+        },
+        "required": [
+          "field_11",
+          "field_12",
+          "field_13",
+          "field_14"
+        ]
+      },
+      "view_edit-case_view_15": {
+        "type": "object",
+        "title": "Edit Case in Edit Case",
+        "description": "Schema for Edit Case view in Edit Case",
+        "properties": {
+          "field_25": {
+            "title": "Union",
+            "description": "Reference to a Union object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_26": {
+            "title": "Coordinator",
+            "description": "Reference to a Coordinator object",
+            "type": "string",
+            "format": "uuid"
+          },
+          "field_27": {
+            "title": "Status",
+            "description": "Status field",
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Active",
+              "Closed"
+            ],
+            "default": "kn-blank"
+          }
+        }
+      },
+      "view_edit-coordinator_view_18": {
+        "type": "object",
+        "title": "Edit Coordinator in Edit Coordinator",
+        "description": "Schema for Edit Coordinator view in Edit Coordinator",
+        "properties": {
+          "field_11": {
+            "title": "Name",
+            "description": "Name field",
+            "type": "string"
+          },
+          "field_12": {
+            "title": "Email",
+            "description": "Email field",
+            "type": "string",
+            "format": "email"
+          },
+          "field_13": {
+            "title": "Password",
+            "description": "Password field",
+            "type": "string"
+          },
+          "field_14": {
+            "title": "User Status",
+            "description": "User Status field",
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "pending approval"
+            ],
+            "default": "active"
+          },
+          "field_15": {
+            "title": "User Roles",
+            "description": "List of user roles",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "field_11",
+          "field_12",
+          "field_13",
+          "field_14"
+        ]
+      },
+      "PaginationMeta": {
+        "type": "object",
+        "description": "Pagination metadata for list responses",
+        "properties": {
+          "total_pages": {
+            "type": "integer",
+            "description": "Total number of pages available"
+          },
+          "total_records": {
+            "type": "integer",
+            "description": "Total number of records across all pages"
+          },
+          "current_page": {
+            "type": "integer",
+            "description": "Current page number"
+          }
+        }
+      },
+      "PaginatedResponse": {
+        "type": "object",
+        "description": "Standard response format for paginated results",
+        "properties": {
+          "records": {
+            "type": "array",
+            "description": "Array of records for the current page",
+            "items": {
+              "type": "object",
+              "description": "Record data (varies by endpoint)"
+            }
+          },
+          "total_pages": {
+            "type": "integer",
+            "description": "Total number of pages available"
+          },
+          "total_records": {
+            "type": "integer",
+            "description": "Total number of records across all pages"
+          },
+          "current_page": {
+            "type": "integer",
+            "description": "Current page number"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "page": {
+        "name": "page",
+        "in": "query",
+        "description": "Page number to retrieve",
+        "schema": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1
+        },
+        "required": false
+      },
+      "rowsPerPage": {
+        "name": "rows_per_page",
+        "in": "query",
+        "description": "Number of records per page",
+        "schema": {
+          "type": "integer",
+          "default": 25,
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "required": false
+      },
+      "sortField": {
+        "name": "sort_field",
+        "in": "query",
+        "description": "Field to sort by",
+        "schema": {
+          "type": "string"
+        },
+        "required": false
+      },
+      "sortOrder": {
+        "name": "sort_order",
+        "in": "query",
+        "description": "Sort direction",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ],
+          "default": "asc"
+        },
+        "required": false
+      }
+    },
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Knack-Application-Id",
+        "description": "API key for object-based operations. Required for all object-based endpoints."
+      },
+      "apiKeyRest": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Knack-REST-API-Key",
+        "description": "REST API key for authenticated operations. Required along with the Application ID."
+      },
+      "viewAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "Bearer token for view-based operations when accessing secure views. Format: 'Bearer {token}'"
+      }
+    }
+  }
+}

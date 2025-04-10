@@ -1,0 +1,116 @@
+{
+  "application": {
+    "name": "Project Management App",
+    "objects": [
+      {
+        "name": "Projects",
+        "key": "object_1",
+        "inflections": {
+          "singular": "Project",
+          "plural": "Projects"
+        },
+        "fields": [
+          {
+            "name": "Project Name",
+            "key": "field_1",
+            "type": "short_text",
+            "required": true
+          },
+          {
+            "name": "Description",
+            "key": "field_2",
+            "type": "paragraph_text",
+            "required": false
+          },
+          {
+            "name": "Due Date",
+            "key": "field_3",
+            "type": "date_time",
+            "required": true
+          },
+          {
+            "name": "Budget",
+            "key": "field_4",
+            "type": "currency",
+            "required": false
+          },
+          {
+            "name": "Status",
+            "key": "field_5",
+            "type": "multiple_choice",
+            "required": true,
+            "format": {
+              "options": ["Not Started", "In Progress", "On Hold", "Completed"],
+              "default": "Not Started"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Tasks",
+        "key": "object_2",
+        "inflections": {
+          "singular": "Task",
+          "plural": "Tasks"
+        },
+        "fields": [
+          {
+            "name": "Task Name",
+            "key": "field_6",
+            "type": "short_text",
+            "required": true
+          },
+          {
+            "name": "Project",
+            "key": "field_7",
+            "type": "connection",
+            "required": true,
+            "relationship": {
+              "object": "object_1"
+            }
+          },
+          {
+            "name": "Completed",
+            "key": "field_8",
+            "type": "boolean",
+            "required": false
+          }
+        ]
+      }
+    ],
+    "scenes": [
+      {
+        "name": "Projects Dashboard",
+        "slug": "projects",
+        "parent": null,
+        "views": [
+          {
+            "title": "Projects List",
+            "key": "view_1",
+            "type": "table",
+            "source": {
+              "object": "object_1"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Project Tasks",
+        "slug": "tasks",
+        "parent": "projects",
+        "views": [
+          {
+            "title": "Task List",
+            "key": "view_2",
+            "type": "table",
+            "source": {
+              "object": "object_2"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "api_subdomain": "api",
+  "api_domain": "knackapp.com"
+}

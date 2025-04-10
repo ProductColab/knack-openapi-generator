@@ -1,6 +1,6 @@
 # Knack OpenAPI Generator
 
-A command-line tool to generate OpenAPI 3.1 specifications from Knack application schemas.
+A command-line tool to generate OpenAPI 3.1 specifications from [Knack](https://knack.com) application schemas.
 
 ## Features
 
